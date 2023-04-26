@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scrollbar" id="style-7">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <head>
         <meta charset="UTF-8">
@@ -7,8 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
     </head>
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/style.css">
     <style>
         img {
             height: 100%;
@@ -34,10 +34,12 @@
                 <img src="\images\c1.png" alt="">
             </div>
             <div class="sright" style="align-items: flex-start;">
-                <h1 style="font-size: 2rem;">Secure Text</h1>
-                    <label><p style="font-size: 1.5rem;">Enter a key:</p> <input type="password" name="" id="" style="height: 2.5rem; width:20rem"></label>
-                <textarea id="textBox" name="" placeholder="Enter your text here..." rows="10" style="width: 60rem;"></textarea>
-                <button class="button-17" role="button" style="height: 3rem;">Secure Text</button>
+                <form action="/stext" method="post"> 
+                    <h1 style="font-size: 2rem;">Secure Text</h1>
+                    <label><p style="font-size: 1.5rem;">Enter a key:</p> <input type="password" name="key" id="" style="height: 2.5rem; width:20rem"></label>
+                    <textarea id="textBox" name="textData" placeholder="Enter your text here..." rows="10" style="width: 60rem;"></textarea>
+                    <button class="button-17" type="submit" role="button" style="height: 3rem;">Secure Text</button>
+                </form>
         </div>
     </section>
 </body>

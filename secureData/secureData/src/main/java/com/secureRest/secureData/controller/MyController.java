@@ -10,6 +10,8 @@ import java.util.Map;
 
 @RestController
 public class MyController {
+//make a function which takes string as an input and returns two output a and b which is first and second half of the encryption
+
     @PostMapping("/process-string")
     public ResponseEntity<Map<String, String>> processString(@RequestBody String input) {
         // process input string and return two output strings
@@ -22,6 +24,7 @@ public class MyController {
         // return response with HTTP status 200 OK
         return ResponseEntity.ok(response);
     }
+
 
     @PostMapping("/process-two-strings")
     public ResponseEntity<String> processTwoStrings(@RequestBody Map<String, String> inputs) {
