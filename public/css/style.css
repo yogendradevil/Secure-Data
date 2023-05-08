@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico:wght@400;700&family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@100;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Foldit:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
 /* font-family: 'Press Start 2P', cursive;
 font-family: 'Quantico', sans-serif;
 font-family: 'Roboto', sans-serif; 
-font-family: 'Roboto Slab', serif; */
+font-family: 'Roboto Slab', serif;
+font-family: 'Foldit', cursive;
+font-family: 'Bruno Ace SC', cursive; */
 
 * {
     padding: 0;
@@ -28,19 +32,33 @@ nav {
     padding: 0 2rem;
 }
 
-nav a {
+.navMain a {
     text-decoration: none;
     color: white;
     font-size: 2.2rem;
     padding: 1rem 0;
     /* transition: all 1s ease-in-out .3s; */
 }
-nav a:hover{
+.navMain a:hover{
     /* border: #25d09d solid 2px; */
     /* transform: rotate(-5deg); */
     animation: faulty-flicker 0.5s linear 1;
     color: hsl(163, 100%, 69%);
     font-weight: 600;
+}
+.navMain{
+    display: flex;
+    justify-content: space-between;
+}
+#projectName{
+    padding-left: 3rem;
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 3rem;
+    color: white;
+    
+}
+#projectName span{
+    color: hsl(163, 100%, 69%);
 }
 /* #log_in:hover{
 } */
@@ -75,6 +93,11 @@ nav a:hover{
     padding: 2rem 4rem;
 }
 
+.left{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
 .button-group {
     padding: 4rem 0;
@@ -190,4 +213,30 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 8rem;
+}
+
+.sright form input{
+    padding: 0.5rem;
+}
+
+/* stext.html */
+
+#textBox{
+    background-color: black;
+    color: hsl(163, 100%, 69%);
+    border: hsl(163, 100%, 69%) solid .3rem;
+}
+
+#key{
+    background-color: black;
+    color: hsl(163, 100%, 69%);
+    border: hsl(163, 100%, 69%) solid .3rem;
+}
+
+/* success.ejs */
+.successBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

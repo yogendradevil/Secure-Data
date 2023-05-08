@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" class="scrollbar" id="style-7">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/style.css">
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
     </head>
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/style.css">
-    
     <style>
-        .sright{
-            gap:2rem;
-            align-items: flex-start;
-            padding-left: 10rem;
-        }
-        img{
+        img {
             height: 100%;
-            width: 100%;
+        }
+        .sright{
+            gap: 2rem;
+            justify-content: flex-start;
+            padding-top: 10rem;
         }
     </style>
 
     <body>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="#">Blogs</a>
-            <a href="#">Contact Us</a>
-            <a href="#" id="log_in">Log In</a>
-        </nav>
+        <div class="navMain">
+            <a href="/" id="projectName"><span>S</span>plit <span>S</span>hield</a>
+            <nav>
+                <a href="/" class="active">Home</a>
+                <a href="#">Blogs</a>
+                <a href="#">Contact Us</a>
+                <a href="#" id="log_in">Log In</a>
+            </nav>
+        </div>
         <hr>
-
         <!-- body -->
         <section class="sbody">
             <div class="sleft">
                 <img src="\images\c1.png" alt="">
             </div>
-            <div class="sright" >
-                <h1>Get Data</h1>
-                <h1>Drop down</h1>
-                <input type="password" name="" Enter your key id="">
-                <button>Unlock</button>
+            <div class="sright" style="align-items: flex-start; margin-top: 7%">
+                <form action="/getData" method="post"> 
+                    <h1 style="font-size: 3rem; margin-bottom: 2rem">Unlock Text</h1>
+                    <input type="password" name="key" id="key" placeholder="Enter a key..." style="height: 2.5rem; width:60rem; margin-bottom: 2rem">
+                    <!-- <button class="button-17" type="submit" role="button" style="height: 3rem;">Secure Text</button> -->
+                    <button class='glowing-btn'type="submit" role="button"><span class='glowing-txt'>S<span class='faulty-letter'>u</span>bmit</span></button>
+                    <!-- <textarea id="textBox" name="textData" placeholder="Enter your text here..." rows="10" style="width: 60rem; margin-bottom: 2rem"></textarea> -->
+                </form>
         </div>
     </section>
 </body>
