@@ -91,6 +91,11 @@ app.get("/contact", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "contact.html"));
 });
 
+// to stext page
+app.get("/pending", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "pending.html"));
+});
+
 //post method
 app.post("/stext",  (req, res) => {
   const akey = req.body.key; // access the 'key' field from the form
@@ -130,7 +135,7 @@ app.post("/stext",  (req, res) => {
     res.render('success', { akey });
   })
   .catch(error => {console.error(error)
-    res.status(400).render('fail', { error: "This key is already in use, please use another key" });
+    res.status(400).render('fail', { error, file: 'stext' });
   
   }); // handle any errors that may occur
 });
@@ -153,7 +158,7 @@ app.post("/getData", async (req, res) => {
       console.log('out1:', out1);
     } else {
       console.log('No document found in seta collection with the specified key.');
-      res.status(400).render('fail', { error: 'No document found in seta collection with the specified key.'});
+      res.status(400).render('fail', { error: 'No document found in seta collection with the specified key.', file: 'getData'});
       return;
     }
 
@@ -165,12 +170,12 @@ app.post("/getData", async (req, res) => {
       console.log('out2:', out2);
     } else {
       console.log('No document found in setb collection with the specified key.');
-      res.status(400).render('fail', { error: 'No document found in seta collection with the specified key.'});
+      res.status(400).render('fail', { error: 'No document found in seta collection with the specified key.', file: 'getData'});
       return;
     }
   } catch (error) {
     console.error('Error occurred:', error);
-    res.status(500).render('fail', { error });
+    res.status(500).render('fail', { error , file: 'getData'});
     return;
   }
  
@@ -191,11 +196,11 @@ app.post("/getData", async (req, res) => {
       res.render('fetch', { data: responseData });
     } else {
       console.error('Error occurred:', response.status);
-      res.status(400).render('fail', { error: 'Error occurred during API request' });
+      res.status(400).render('fail', { error: 'Error occurred during API request' , file: 'getData'});
     }
   } catch (error) {
     console.error('Error occurred:', error);
-    res.status(400).render('fail', { error });
+    res.status(400).render('fail', { error , file: 'getData'});
   }
 });
 

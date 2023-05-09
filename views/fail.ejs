@@ -33,10 +33,12 @@
     <hr />
     <!-- body -->
     <body>
-      <div class="successBody">
+      <div class="successBody" style="margin-top: 3rem;">
         <h1>Failed</h1>
         <h2>Somthing went wrong try again!</h2>
-        <p>Error: <%= error %></p>
+        <h3>Error: <%= error %></h3>
+        <br><br>
+        <button class='glowing-btn'><span class='glowing-txt' onclick="window.location.href = '/<%= file %>';">G<span class='faulty-letter'>o</span> Back</span></button>
       </div>
     </body>
   </body>

@@ -33,8 +33,11 @@
     <hr />
     <!-- body -->
     <body>
-      <div class="successBody">
-        <h1>Your data: <%= data %></h1>
+      <div class="successBody" style="margin-top: 4rem;">
+        <h1>Your data:</h1>
+        <p style="font-size: 2rem; padding: 3rem; font-family: 'Roboto', sans-serif;"><%= data %></p>
+        <br><br>
+        <button class='glowing-btn'><span class='glowing-txt' onclick="window.location.href = '/getData';">G<span class='faulty-letter'>o</span> Back</span></button>
       </div>
     </body>
   </body>

@@ -126,7 +126,7 @@ nav {
     animation-timing-function: steps(1, end);
     /* animation-timing-function: ease; */
     /* animation-delay: 4s; */
-    animation-duration: 10s;
+    animation-duration: 30s;
     transition: 1s;
 }
 
