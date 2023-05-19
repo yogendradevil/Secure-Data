@@ -15,17 +15,22 @@ app.set('views', path.join(__dirname, 'views'));
 const db = 'mongodb+srv://yogendra:FuEK1BqTMjpqi4NT@cluster0.xyzqx3g.mongodb.net/splitshield?retryWrites=true&w=majority';
 mongoose.connect(db, {
   useNewUrlParser: true
-  // useCreateIndex: true,
-  // useUnifiedTopology: true,
-  // useFindAndModify: false
 }).then(() => {
   console.log('connected to database');
 }).catch(error=>{
   console.log(error);
   console.log("error occured while connecting to database")
 })
+
+let islogin = false;
+let checkmail = '';
+
 // Define schema for collection seta
 const setaSchema = new mongoose.Schema({
+  mail: {
+    type: String,
+    required: true
+  },
   key: {
     type: String,
     required: true,
@@ -39,6 +44,10 @@ const setaSchema = new mongoose.Schema({
 
 // Define schema for collection setb
 const setbSchema = new mongoose.Schema({
+  mail: {
+    type: String,
+    required: true
+  },
   key: {
     type: String,
     required: true,
@@ -49,14 +58,41 @@ const setbSchema = new mongoose.Schema({
     required: true
   }
 });
+
+// Define schema for collection signup
+const signup = new mongoose.Schema({
+  uname: {
+    type: String,
+    required: true
+  },
+  mail: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
+});
+
+// Define schema for collection login
+const login = new mongoose.Schema({
+  mail: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
+});
+
 // Create models for each collection
 const SetA = mongoose.model('seta', setaSchema);
 const SetB = mongoose.model('setb', setbSchema);
+const signUp = mongoose.model('signup', signup);
 
-
-// }).catch((err) => {
-//   console.log(err);
-// })
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
@@ -68,17 +104,29 @@ app.get("/", (req, res) => {
 
 // route for secure data page
 app.get("/securedata", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "securedata.html"));
+  if(islogin){
+    res.sendFile(path.join(__dirname, "public", "securedata.html"));
+  }else{
+    res.sendFile(path.join(__dirname, "public", "login.html"));
+  }
 });
 
 // to stext page
 app.get("/stext", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "stext.html"));
+  if(islogin){
+    res.sendFile(path.join(__dirname, "public", "stext.html"));
+  }else{
+    res.sendFile(path.join(__dirname, "public", "login.html"));
+  }
 });
 
 // to getData page
 app.get("/getData", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "getData.html"));
+  if(islogin){
+    res.sendFile(path.join(__dirname, "public", "getData.html"));
+  }else{
+    res.sendFile(path.join(__dirname, "public", "login.html"));
+  }
 });
 
 // Route for the blog page
@@ -95,6 +143,60 @@ app.get("/contact", (req, res) => {
 app.get("/pending", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pending.html"));
 });
+
+// to signup page
+app.get("/signup", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "signup.html"));
+});
+
+//post request to signup
+app.post("/signup", async (req, res) => {
+  try{
+    // const uname = req.body.name;
+    checkmail = req.body.email;
+    // let passwd = req.body.passwd;
+
+    // Store data in signup collection
+    const signupData = {
+      uname: req.body.name,
+      mail: req.body.email,
+      password: req.body.passwd
+    }
+    await signUp.create(signupData);
+    console.log('signup done')
+    islogin = true;
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+  }catch(error){
+    // res.status(400).render('fail', { error: 'Error occurred during signup' , file: 'signup'});
+    res.send(error);
+  }
+});
+
+// to login page
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
+});
+
+
+//post request to login
+app.post("/login", async (req, res) => {
+  try{
+    checkmail = req.body.email;
+
+    // checking the values
+    const check = await signUp.findOne({mail:req.body.email})
+
+    if(check.password === req.body.passwd){
+      islogin = true;
+      res.sendFile(path.join(__dirname, "public", "index.html"));
+    }else{
+      res.status(400).render('fail', { error: 'Incorrect password' , file: 'login'});
+    }
+  }catch(error){
+    res.status(400).render('fail', { error: 'Error occurred during login' , file: 'login'});
+  }
+});
+
 
 //post method
 app.post("/stext",  (req, res) => {
@@ -119,6 +221,7 @@ app.post("/stext",  (req, res) => {
    
       // Store data in seta collection
     const setAData = {
+      mail: checkmail,
       key: akey,
       output1: out1
     };
@@ -126,6 +229,7 @@ app.post("/stext",  (req, res) => {
 
     // Store data in setb collection
     const setBData = {
+      mail: checkmail,
       key: akey,
       output2: out2
     };
@@ -140,9 +244,6 @@ app.post("/stext",  (req, res) => {
   }); // handle any errors that may occur
 });
 
-
-
-
 // to handle /getData post data
 app.post("/getData", async (req, res) => {
   const akey = req.body.key;
@@ -151,7 +252,11 @@ app.post("/getData", async (req, res) => {
 
   try {
     // Find out1 from seta collection
-    const setaDoc = await SetA.findOne({ key: akey });
+    const setaDoc = await SetA.findOne({
+      $and: [
+      { key: akey },
+      { mail: checkmail }
+    ]});
     if (setaDoc) {
       out1 = setaDoc.output1;
       // Use out1 as needed
@@ -163,7 +268,11 @@ app.post("/getData", async (req, res) => {
     }
 
     // Find out2 from setb collection
-    const setbDoc = await SetB.findOne({ key: akey });
+    const setbDoc = await SetB.findOne({
+      $and: [
+      { key: akey },
+      { mail: checkmail }
+    ]});
     if (setbDoc) {
       out2 = setbDoc.output2;
       // Use out2 as needed

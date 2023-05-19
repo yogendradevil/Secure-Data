@@ -32,18 +32,22 @@
         </div>
         <hr>
         <!-- body -->
-        <section class="sbody">
-            <div class="sleft">
+        <section class="signupBody">
+            <div class="leftSignup">
                 <img src="\images\c4.png" alt="">
             </div>
-            <div class="sright" style="align-items: flex-start; margin-top: 7%">
-                <form action="/getData" method="post"> 
-                    <h1 style="font-size: 3rem; margin-bottom: 2rem">Unlock Text</h1>
-                    <input type="password" name="key" id="key" placeholder="Enter a key..." style="height: 2.5rem; width:60rem; margin-bottom: 2rem">
-                    <!-- <button class="button-17" type="submit" role="button" style="height: 3rem;">Secure Text</button> -->
-                    <button class='glowing-btn'type="submit" role="button"><span class='glowing-txt'>S<span class='faulty-letter'>u</span>bmit</span></button>
-                    <!-- <textarea id="textBox" name="textData" placeholder="Enter your text here..." rows="10" style="width: 60rem; margin-bottom: 2rem"></textarea> -->
-                </form>
+            <div class="rightSignup">
+                <div class="signupCard">
+                    <h1>Log In</h1>
+                    <form action="/login" method="post" class="signupForm">
+                        <p>Enter mail Id:</p>
+                        <input type="email" name="email" id="email" placeholder="eg: yogi@gmail.com" >
+                        <p>Enter password:</p>
+                        <input type="password" name="passwd" id="passwd" placeholder="password..." >
+                        <button class='glowing-btn'type="submit" role="button"><span class='glowing-txt'>L<span class='faulty-letter'>o</span>g In</span></button>
+                    </form>
+                    <p id="loginlink"><a href="/signup" >create an account</a></p>
+                </div>
         </div>
     </section>
 </body>

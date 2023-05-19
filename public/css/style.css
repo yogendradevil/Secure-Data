@@ -240,3 +240,51 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+/* signup.html */
+.signupBody{
+    display: flex;
+}
+.leftSignup, .rightSignup{
+    width: 50%;
+    height: 90vh;
+}
+.rightSignup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+}
+
+.signupCard{
+    border: solid .2rem hsl(163, 100%, 69%);
+    padding: 2rem;
+}
+.signupCard form{
+font-size: 2rem;
+}
+.signupCard button{
+    font-size: 1rem;
+}
+.signupCard input{
+    width: 30rem;
+    height: 2.5rem;
+    margin-bottom: 2rem;
+    background-color: black;
+    color: hsl(163, 100%, 69%);
+    border: hsl(163, 100%, 69%) solid .1rem;
+}
+.signupCard h1{
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'Bruno Ace SC', cursive;
+}
+#loginlink{
+    text-align: right;
+}
+.signupCard a{
+    /* text-decoration: none; */
+    color: white;
+    font-size: 1.2rem;
+}
