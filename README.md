@@ -16,6 +16,9 @@ The key features of our secure data storage project include:
 - User-Friendly Interface: Our project provides a user-friendly interface for securely storing and retrieving data. Users can input their text data through a secure channel and retrieve it whenever needed, confident in the knowledge that their information is protected.
 
 ### By implementing Split Shield, our project ensures that users' text data remains confidential and safe from unauthorized access. Its innovative approach to data storage significantly reduces the risk of data breaches and offers a robust solution for safeguarding sensitive information.
+
+[screen-capture.webm](https://github.com/yogendradevil/Secure-Data/assets/81254268/8cd2bc18-6bfa-42f0-ac4f-fb7102c9944f)
+
 ---
 ## Requirements
 
