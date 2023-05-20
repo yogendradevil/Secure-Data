@@ -1,5 +1,4 @@
 package Security;
-
 import java.util.Random;
 import java.util.Scanner;
 import javax.crypto.Cipher;
@@ -144,7 +143,6 @@ class Main1 extends Decryption{
             default:{
                 System.out.println("INVALID Entry");
             }
-
 
         }
     }
