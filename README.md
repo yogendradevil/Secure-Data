@@ -1,5 +1,5 @@
 # Secure Data
-Our project aims to provide a secure data storage solution by utilizing an innovative technique called Split Shield. With this technique, we can ensure the confidentiality and integrity of users' text data while storing it in a secure manner.
+Our project aims to provide a secure data storage solution by utilizing an innovative technique called Split Shield. With this technique, we can ensure the confidentiality and integrity of users' text data while storing it in a secure manner. 
 
 Split Shield works by dividing the user's text data into two random parts and storing each part separately in different databases. Before storage, the data undergoes a robust encryption process, which further enhances its security. By splitting and distributing the data, we create an additional layer of protection, making it extremely challenging for hackers to gain access to the complete information even if they manage to breach one of the databases.
 
