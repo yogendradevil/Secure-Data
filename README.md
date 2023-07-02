@@ -19,6 +19,31 @@ The key features of our secure data storage project include:
 
 [screen-capture.webm](https://github.com/yogendradevil/Secure-Data/assets/81254268/8cd2bc18-6bfa-42f0-ac4f-fb7102c9944f)
 
+# API
+
+Endpoint 1: [ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-string](url)
+
+The /process-string endpoint of the Spring Boot API accepts a string of sensitive data and performs encryption using the AES encryption algorithm. It provides a secure way to protect sensitive information by converting it into an encrypted form.
+
+![image](https://github.com/yogendradevil/Rest-API-for-split-data-encryption-and-decryption/assets/81254268/dd889e6f-98d0-46a0-8fd9-79e866bdcfdc)
+
+Endpoint 2: [ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-two-strings](url)
+
+The /process-two-strings endpoint of the Spring Boot API is designed to merge and encrypt two strings of sensitive data using the AES encryption algorithm. It provides a secure way to combine and protect multiple pieces of sensitive information into a single encrypted form.
+
+![image](https://github.com/yogendradevil/Rest-API-for-split-data-encryption-and-decryption/assets/81254268/0d4fc2fc-15b4-4a70-ac29-6a9f7e8247e1)
+
+live demo:
+
+Endpoint 1: /process-string
+
+![image](https://github.com/yogendradevil/Rest-API-for-split-data-encryption-and-decryption/assets/81254268/d497e014-fde6-4254-84ff-2aa899038955)
+
+Endpoint 2: /process-two-strings
+
+![image](https://github.com/yogendradevil/Rest-API-for-split-data-encryption-and-decryption/assets/81254268/44272666-3a85-49b9-bc13-3fa9f953f4ad)
+
+
 ---
 ## Requirements
 
