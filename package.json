@@ -4,6 +4,8 @@
   "description": "project based on web devlopment, cyber security and cloud devloped by Yogendra, parth and kartik",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yogendra R Bijapur",

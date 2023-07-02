@@ -204,7 +204,8 @@ app.post("/stext",  (req, res) => {
   const textData = req.body.textData; // access the 'textData' field from the form
   const jsonData = JSON.stringify({akey, textData});
   console.log(jsonData); // the string to be sent to the API
-  fetch('http://127.0.0.1:8080/process-string', {
+  // fetch('http://127.0.0.1:8080/process-string', {
+  fetch('http://ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-string', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -291,7 +292,8 @@ app.post("/getData", async (req, res) => {
   const sendingJsonData = JSON.stringify({ input1: out1, input2: out2 });
 
   try {
-    const response = await fetch('http://127.0.0.1:8080/process-two-strings', {
+    // const response = await fetch('http://127.0.0.1:8080/process-two-strings', {
+    const response = await fetch('http://ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-two-strings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -316,7 +318,7 @@ app.post("/getData", async (req, res) => {
 
 
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 const hostname = "127.0.0.1";
 app.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

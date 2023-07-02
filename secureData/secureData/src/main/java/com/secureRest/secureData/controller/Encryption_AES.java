@@ -47,7 +47,7 @@ class Encryption_AES {
         }
         catch (InvalidAlgorithmParameterException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e)
         {
-            System.out.println("Error occured during encryption: " + e.toString());
+            System.out.println("Error occured during encryption: " + e);
         }
         return null;
     }
@@ -55,6 +55,7 @@ class Encryption_AES {
 
     {
         String encryptedval = encrypt(originalval);
+        assert encryptedval != null;
         int min = (encryptedval.length() / 2) - 10;
         int max = (encryptedval.length() / 2) + 10;
 
@@ -84,9 +85,14 @@ class Encryption_AES {
 class Decryption extends Encryption_AES{
     public static String decrypt(String strToDecrypt)
     {
+        if (strToDecrypt == null) {
+            throw new IllegalArgumentException("Input string to decrypt cannot be null");
+        }
+        byte[] decodedBytes = Base64.getDecoder().decode(strToDecrypt);
         try
         {
             /* Declare a byte array. */
+
             byte[] iv = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
             IvParameterSpec ivspec = new IvParameterSpec(iv);
             /* Create factory for secret keys. */
@@ -98,11 +104,13 @@ class Decryption extends Encryption_AES{
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
             cipher.init(Cipher.DECRYPT_MODE, secretKey, ivspec);
             /* Returns decrypted value. */
+//            byte[] bytes = (src != null) ? src.getBytes(Charset.defaultCharset()) : new byte[0];
             return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
+
         }
         catch (InvalidAlgorithmParameterException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e)
         {
-            System.out.println("Error occured during decryption: " + e.toString());
+            System.out.println("Error occured during decryption: " + e);
         }
         return null;
     }
@@ -131,26 +139,16 @@ class Main1 extends Decryption{
         System.out.println("Enter 2 to get your Data");
         Scanner sc = new Scanner(System.in);
         int n=sc.nextInt();
-        switch(n) {
-            case 1:
-            {
+        switch (n) {
+            case 1 -> {
                 System.out.println("Enter the text");
                 Scanner sc1 = new Scanner(System.in);
                 String originalval = sc1.nextLine();
                 System.out.println(originalval);
-                Decryption obj = new Decryption();
-                System.out.println(obj.Data_splitting(originalval));
-                break;
+                System.out.println(Data_splitting(originalval));
             }
-            case 2:{
-                System.out.println("Database required to fetch");
-                break;
-            }
-            default:{
-                System.out.println("INVALID Entry");
-            }
-
-
+            case 2 -> System.out.println("Database required to fetch");
+            default -> System.out.println("INVALID Entry");
         }
     }
 }
