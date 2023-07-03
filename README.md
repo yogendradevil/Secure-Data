@@ -21,13 +21,13 @@ The key features of our secure data storage project include:
 
 # API
 
-Endpoint 1: [ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-string](url)
+Endpoint 1: [ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-string](ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-string)
 
 The /process-string endpoint of the Spring Boot API accepts a string of sensitive data and performs encryption using the AES encryption algorithm. It provides a secure way to protect sensitive information by converting it into an encrypted form.
 
 ![image](https://github.com/yogendradevil/Rest-API-for-split-data-encryption-and-decryption/assets/81254268/dd889e6f-98d0-46a0-8fd9-79e866bdcfdc)
 
-Endpoint 2: [ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-two-strings](url)
+Endpoint 2: [ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-two-strings](ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-two-strings)
 
 The /process-two-strings endpoint of the Spring Boot API is designed to merge and encrypt two strings of sensitive data using the AES encryption algorithm. It provides a secure way to combine and protect multiple pieces of sensitive information into a single encrypted form.
 
