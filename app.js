@@ -318,7 +318,7 @@ app.post("/getData", async (req, res) => {
 
 
 
-const port = process.env.PORT || 8000;
+const port = 80;
 const hostname = "127.0.0.1";
 app.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
