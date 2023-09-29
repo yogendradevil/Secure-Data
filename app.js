@@ -205,7 +205,7 @@ app.post("/stext",  (req, res) => {
   const jsonData = JSON.stringify({akey, textData});
   console.log(jsonData); // the string to be sent to the API
   // fetch('http://127.0.0.1:8080/process-string', {
-  fetch('http://ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-string', {
+  fetch('https://split-shild-api.onrender.com/process-string', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -293,7 +293,7 @@ app.post("/getData", async (req, res) => {
 
   try {
     // const response = await fetch('http://127.0.0.1:8080/process-two-strings', {
-    const response = await fetch('http://ec2-65-1-108-65.ap-south-1.compute.amazonaws.com:8080/process-two-strings', {
+    const response = await fetch('https://split-shild-api.onrender.com/process-two-strings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -318,7 +318,7 @@ app.post("/getData", async (req, res) => {
 
 
 
-const port = 80;
+const port = process.env.PORT || 80;
 const hostname = "127.0.0.1";
 app.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
