@@ -1,5 +1,26 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
+    "version": 2,
+    "routes": [
+      {
+        "src": "/public/(.*)",
+        "dest": "/public/$1"
+      },
+      {
+        "src": "/securedata",
+        "dest": "/securedata.html"
+      },
+      {
+        "src": "/stext",
+        "dest": "/stext.html"
+      },
+      {
+        "src": "/getData",
+        "dest": "/getData.html"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
     ]
   }
+  
