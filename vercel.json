@@ -7,19 +7,19 @@
       },
       {
         "src": "/securedata",
-        "dest": "/securedata.html"
+        "dest": "/securedata"
       },
       {
         "src": "/stext",
-        "dest": "/stext.html"
+        "dest": "/stext"
       },
       {
         "src": "/getData",
-        "dest": "/getData.html"
+        "dest": "/getData"
       },
       {
         "src": "/(.*)",
-        "dest": "/index.html"
+        "dest": "/"
       }
     ]
   }
