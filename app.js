@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // connecting mongodb atlas
-const db = DB;
+const db = 'mongodb+srv://yogendra:FuEK1BqTMjpqi4NT@cluster0.xyzqx3g.mongodb.net/splitshield?retryWrites=true&w=majority';
 mongoose.connect(db, {
   useNewUrlParser: true
 }).then(() => {
